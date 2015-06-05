@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="myApp">
+    <body>
+    	<h2>Using Watches in Controllers</h2>
+	    <div ng-controller="CustomersController">
+	    	<ul>
+	    		<li ng-repeat="cust in customers">{{ cust.name }} {{ cust.age }}</li>
+	    	</ul>
+	    	<br />
+	    	<h4>Actions</h4>
+	    	<div ng-repeat="msg in messages">{{ msg.action }}</div>
+	    	<br /><br />
+			<button ng-click="newCustomers()">Assign New Customers</button>&nbsp;&nbsp;
+	    	<button ng-click="addCustomer()">Add Customer</button>&nbsp;&nbsp;
+			<button ng-click="editCustomer()">Edit Customer</button>&nbsp;&nbsp;
+	    </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js" type="text/javascript"></script>
+        <script>
+        	var app = angular.module('myApp', []);
+
+        	app.controller('CustomersController', ['$scope', function($scope) {
+        		var newCustomers = [
+        			{ name: 'Rita', age: 35 },
+        			{ name: 'Dan', age: 56 }
+				];
+
+        		$scope.customers = [
+        			{ name: 'John', age: 40 },
+        			{ name: 'Fred', age: 25 },
+        			{ name: 'Tina', age: 62 },
+				];
+				$scope.messages = [];
+				$scope.action = null;
+
+				$scope.newCustomers = function() {
+					$scope.customers = newCustomers;
+					$scope.action = 'Assign New Customers';
+				};
+
+				$scope.addCustomer = function() {
+					$scope.customers.push({ name: 'Michelle', age: 55});
+					$scope.action = 'Add New Customer';
+				};
+
+				$scope.editCustomer = function() {
+					$scope.customers[0].name = 'New Name';
+					$scope.customers[0].age = 99;
+					$scope.action = 'Edit Customer';
+				};
+
+				/*
+
+				$scope.$watch('customers', function(oldVal, newVal) {
+					if ($scope.action) {
+						$scope.messages.push({action: $scope.action + ' action performed'});
+					}
+				}, false);
+
+				$scope.$watch('customers', function(oldVal, newVal) {
+					if ($scope.action) {
+						$scope.messages.push({action: $scope.action + ' action performed'});
+					}
+				}, true);
+
+				*/
+
+				$scope.$watchCollection('customers', function(oldVal, newVal) {
+					if ($scope.action) {
+						$scope.messages.push({action: $scope.action + ' action performed'});
+					}
+				});
+
+
+        	}]);
+        </script>
+    </body>
+</html>

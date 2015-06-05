@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isolate Scope Directive</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+	    
+	  <h3>Directive with isolate Scope and Model (uses = and restrict)</h3>
+
+	  Attribute: <div isolate-scope-with-model-and-element datasource="customer"></div>
+	  
+	  <br /><br />
+
+	  Element: <br /><isolate-scope-with-model-and-element datasource="customer"></isolate-scope-with-model-and-element>
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/isolateScopeWithModelAndElementDirective.js"></script>
+</body>
+</html>

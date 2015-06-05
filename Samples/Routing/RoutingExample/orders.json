@@ -1,0 +1,6 @@
+[
+    {"id": 1, "product":"Golf Clubs", "total": 499.99}, 
+    {"id": 2, "product": "Shirt", "total": 39.99}, 
+    {"id": 3, "product":"Bicycle", "total": 299.99}, 
+    {"id": 4, "product":"Hat", "total": 29.99}
+]

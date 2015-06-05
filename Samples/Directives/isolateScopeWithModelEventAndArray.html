@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isolate Scope Directive</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+	    
+	  <h3>Directive with isolate Scope, Model, Event, and Array</h3>
+
+	  Parent Scope Customers:
+	  <br /><br />
+	  <ul><li ng-repeat="cust in customers">{{ cust.name }}</li></ul>
+	  <br />
+
+	  Attribute: <div isolate-scope-with-model-event-and-array datasource="customers" add="addCustomer()"></div>
+	  <br /><br />
+	  Element: <br /><isolate-scope-with-model-event-and-array datasource="customers" add="addCustomer()"></isolate-scope-with-model-event-and-array>
+	  
+	</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/isolateScopeWithModelEventAndArrayDirective.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<head>
+	<title>Angular App</title>
+	<link href="styles/animations.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Customers and Orders</h1>
+    
+    <div ng-view class="slide-animation"></div>
+    
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/customersController.js"></script>
+    <script src="/app/controllers/ordersController.js"></script>
+    <script src="/app/services/customersService.js"></script>
+    <script src="/app/services/ordersService.js"></script>
+
+    <!-- Example of a local template -->
+    <script type="text/ng-template" id="templates/orders.html">
+        <h3>Orders</h3>
+
+        CustomerID: {{ customerId }}
+        <br />
+        <table>
+            <tr ng-repeat="order in orders">
+                <td>{{product}}</td>
+                <td>{{total | currency}}</td>
+            </tr>
+        </table>
+
+        <br />
+
+        <a href="#/">Customers</a>
+    </script>
+
+</body>
+</html>

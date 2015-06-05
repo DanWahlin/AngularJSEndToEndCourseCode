@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isolate Scope Directive</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+	    
+	  <h3>Isolate Scope Directive</h3>
+	  Directive output (no output since parent scope isn't shared)
+	  <div isolate-scope></div>
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/isolateScopeDirective.js"></script>
+</body>
+</html>

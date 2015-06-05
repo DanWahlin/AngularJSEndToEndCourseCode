@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directive without a Controller</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+
+	  Parent Scope Customers:
+	  <br /><br />
+	  <ul><li ng-repeat="cust in customers">{{ cust.name }}</li></ul>
+	    
+	  <h3>Directive without a Controller (naive example)</h3>
+	  Attribute: <div controller-not-used datasource="customers" add="addCustomer()"></div>
+	  <br /><br />
+	  Element: <br /><controller-not-used datasource="customers" add="addCustomer()"></controller-not-used>
+	  
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/controllerNotUsed.js"></script>
+</body>
+</html>

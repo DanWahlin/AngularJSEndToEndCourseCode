@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using Compile in a Directive</title>
+</head>
+<body>
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+	    
+	  <h3>Using Compile in a Directive</h3>
+      Open the console to see the output of compile, pre-link, and post-link.
+	  <div compile-directive>
+          <div compile-directive>        
+          </div>
+      </div>
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/compileDirective.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!doctype html>
+<html ng-app="directivesModule">
+<body>
+    <h1>Creating a Custom Directive</h1>
+
+    <div ng-controller="CustomersController">
+        <h3>DOM Manipulation Directive</h3>
+        <div dom-directive>Click Me!</div>
+        <br /><br />
+
+        <button ng-click="changeData()">Change Customer</button>
+        <br /><br />
+
+        <h3>Shared Scope Directive</h3>
+        <div shared-scope></div>
+        <br /><br />
+
+        <h3>Directive with Isolate Scope (no data will show)</h3>
+        <div isolate-scope></div>
+        <br /><br />
+
+        <h3>Directive with Isolate Scope and String Passed In (uses @)</h3>
+        <div isolate-scope-with-string name="{{ customer.name }}"></div>
+        <br /><br />
+
+        <h3>Directive with Isolate Scope and Model (uses =)</h3>
+        <div isolate-scope-with-model datasource="customer"></div>
+        <br /><br />
+
+
+        <h3>Directive with isolate Scope and Model (Element and Attribute)</h3>
+        Attribute: <div isolate-scope-with-model-and-element datasource="customer"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-model-and-element datasource="customer"></isolate-scope-with-model-and-element>
+        <br /><br />
+
+        <h3>Directive with isolate Scope, Model and Event</h3>
+        Attribute: <div isolate-scope-with-model-and-event datasource="customer" click="changeData()"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-model-and-event datasource="customer" click="changeData()"></isolate-scope-with-model-and-event>
+        <br /><br />
+
+        <h3>Directive with isolate Scope, Model, Event, and Array</h3>
+        Attribute: <div isolate-scope-with-model-event-and-array datasource="customers" add="addCustomer()"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-model-event-and-array datasource="customers" add="addCustomer()"></isolate-scope-with-model-event-and-array>
+        <br /><br />
+
+        <h3>Directive with Controller</h3>
+        Attribute: <div isolate-scope-with-controller datasource="customers" add="addCustomer()"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-controller datasource="customers" add="addCustomer()"></isolate-scope-with-controller>
+
+        <br /><br />
+
+        <h3>Directive with Controller Passing Parameter out to External Function - Option 1</h3>
+        Attribute: <div isolate-scope-with-controller-passing-parameter1 datasource="customers" add="addCustomer(name)"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-controller-passing-parameter1 datasource="customers" add="addCustomer(name)"></isolate-scope-with-controller-passing-parameter1>
+
+        <br /><br />
+
+        <h3>Directive with Controller Passing Parameter out to External Function - Option 2</h3>
+        Attribute: <div isolate-scope-with-controller-passing-parameter2 datasource="customers" add="addCustomer"></div>
+        <br /><br />
+        Element: <br /><isolate-scope-with-controller-passing-parameter2 datasource="customers" add="addCustomer"></isolate-scope-with-controller-passing-parameter2>
+
+        <br /><br />
+
+        <h3>Directive with Transclusion</h3>
+        <br />
+        <isolate-scope-with-transclusion tasks="tasks">
+            <div ng-repeat="task in tasks track by $index">
+          	   <strong>{{ task.title }}</strong>
+            </div>
+        </isolate-scope-with-transclusion>
+
+        <br /><br />
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>>
+    <script>
+        var app = angular.module('directivesModule', []);
+
+        app.controller('CustomersController', ['$scope', function ($scope) {
+            var counter = 0;
+            $scope.tasks = [{ title: 'Task 1' }];
+            $scope.customer = {
+                name: 'David',
+                street: '1234 Anywhere St.'
+            };
+            
+            $scope.customers = [
+                {
+                    name: 'David',
+                    street: '1234 Anywhere St.'
+                },
+                {
+                    name: 'Tina',
+                    street: '1800 Crest St.'
+                },
+                {
+                    name: 'Michelle',
+                    street: '890 Main St.'
+                }
+            ];
+
+            $scope.addCustomer = function (name) {
+            	console.log(name);
+                counter++;
+                $scope.customers.push({
+                    name: (name) ? name : 'New Customer' + counter,
+                    street: counter + ' Cedar Point St.'
+                });
+            };
+
+            $scope.changeData = function () {
+                counter++;
+                $scope.customer = {
+                    name: 'James',
+                    street: counter + ' Cedar Point St.'
+                };
+            };
+        }]);
+
+        app.directive('domDirective', function () {
+            return {
+                restrict: 'A',
+                link: function ($scope, element, attrs) {
+                    element.bind('click', function () {
+                        element.html('You clicked me!');
+                    });
+                    element.bind('mouseenter', function () {
+                        element.css('background-color', 'yellow');
+                    });
+                    element.bind('mouseleave', function () {
+                        element.css('background-color', 'white');
+                    });
+                }
+            };
+        });
+
+        app.directive('sharedScope', function () {
+            return {
+                template: 'Name: {{customer.name}} Street: {{customer.street}}'
+            };
+        });
+
+        app.directive('isolateScope', function () {
+            return {
+                scope: {},
+                template: 'Name: {{customer.name}} Street: {{customer.street}}'
+            };
+        });
+
+        app.directive('isolateScopeWithString', function () {
+            return {
+                scope: {
+                    name: '@' //Two-way data binding
+                },
+                template: 'Name: {{name}}'
+            };
+        });
+
+        app.directive('isolateScopeWithModel', function () {
+            return {
+                scope: {
+                    datasource: '=' //Two-way data binding
+                },
+                template: 'Name: {{datasource.name}} Street: {{datasource.street}}'
+            };
+        });
+
+        app.directive('isolateScopeWithModelAndElement', function () {
+            return {
+                restrict: 'EA', //Restrict to Element and Attribute
+                scope: {
+                    datasource: '='
+                },
+                template: 'Name: {{datasource.name}} Street: {{datasource.street}}'
+            };
+        });
+
+
+        app.directive('isolateScopeWithModelAndEvent', function () {
+            return {
+                restrict: 'EA',
+                scope: {
+                    datasource: '=',
+                    click: '&'
+                },
+                template: 'Name: {{datasource.name}} Street: {{datasource.street}} <button ng-click="click()">Change Data</button>'
+            };
+        });
+
+        app.directive('isolateScopeWithModelEventAndArray', function () {
+            return {
+                restrict: 'EA',
+                scope: {
+                    datasource: '=',
+                    add: '&',
+                },
+                template: '<button ng-click="add()">Change Data</button><ul><li ng-repeat="cust in datasource">{{ cust.name }}</li></ul>'
+            };
+        });
+
+        app.directive('isolateScopeWithController', function () {
+            return {
+                restrict: 'EA',
+                scope: {
+                    datasource: '=',
+                    add: '&',
+                },
+                controller: function ($scope) {
+                    var counter = 0;
+                    function init() {
+                        $scope.customers = angular.copy($scope.datasource);
+                    }
+                    init();
+                    $scope.addCustomer = function () {
+                        $scope.add();
+
+                        //Add new customer to directive scope
+                        $scope.customers.push({
+                            name: 'New Directive Controller Customer',
+                            street: counter + ' Main St.'
+                        });
+                    };
+                },
+                template: '<button ng-click="addCustomer()">Change Data</button><ul><li ng-repeat="cust in customers">{{ cust.name }}</li></ul>'
+            };
+        });
+
+        app.directive('isolateScopeWithControllerPassingParameter1', function () {
+	    	return {
+		        restrict: 'EA',
+		        scope: {
+		            datasource: '=',
+		            add: '&',
+		        },
+		        controller: function ($scope) {
+		            var counter = 0;
+		            function init() {
+		                $scope.customers = angular.copy($scope.datasource);
+		            }
+		            init();
+
+		            $scope.addCustomer = function () {
+		                //Call external scope's function
+		                var name = 'New Customer Added by Directive';
+		                $scope.add({name: name});
+
+		                //Add new customer to directive scope
+		                $scope.customers.push({
+		                    name: name                
+		                });
+		            };
+		        },
+		        template: '<button ng-click="addCustomer()">Change Data</button><ul>' +
+		                  '<li ng-repeat="cust in customers">{{ cust.name }}</li></ul>'
+    		};
+		});
+
+        app.directive('isolateScopeWithControllerPassingParameter2', function () {
+            return {
+                restrict: 'EA',
+                scope: {
+                    datasource: '=',
+                    add: '&',
+                },
+                controller: function ($scope) {
+                    var counter = 0;
+                    function init() {
+                        $scope.customers = angular.copy($scope.datasource);
+                    }
+                    init();
+
+                    $scope.addCustomer = function () {
+                        //Call external scope's function
+                        var name = 'New Customer Added by Directive';
+                        $scope.add()(name);
+
+                        //Add new customer to directive scope
+                        $scope.customers.push({
+                            name: name                
+                        });
+                    };
+                },
+                template: '<button ng-click="addCustomer()">Change Data</button><ul>' +
+                          '<li ng-repeat="cust in customers">{{ cust.name }}</li></ul>'
+            };
+        });
+
+        app.directive('isolateScopeWithTransclusion', function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+                scope: {
+                	tasks: '='
+                },
+                controller: function ($scope) {
+                    $scope.addTask = function () {
+
+                    	if (!$scope.tasks) $scope.tasks = [];
+
+                        $scope.tasks.push({
+                        	title: $scope.title
+                        });
+
+                    };
+                },
+                template: '<div>Name: <input type="text" ng-model="title" />&nbsp;' +
+                          '<button ng-click="addTask()">Add Task</button>' +
+                          '<div class="taskContainer"><br />' +
+                             '<ng-transclude></ng-transclude>' +
+                          '</div></div>'
+            };
+        });
+
+        //ng-repeat issues with transclusion and templates: https://github.com/angular/angular.js/issues/1809
+    </script>
+</body>
+</html>

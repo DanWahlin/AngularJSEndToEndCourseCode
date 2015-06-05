@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_ViewsLayout.cshtml";
+}
+<h3>Orders</h3>
+CustomerID: {{ customerId }}
+<br />
+<table>
+    @for (int i = 0; i < 10; i++)
+    {
+        <tr>
+            <td>@i</td>
+        </tr>
+    }
+</table>
+<br />
+<a href="#/">Customers</a>
+

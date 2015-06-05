@@ -1,0 +1,71 @@
+<!--
+   AngularJS in 20-ish Minutes
+   Dan Wahlin
+
+   @DanWahlin
+   http://weblogs.asp.net/dwahlin
+   
+   1. Data Binding and Directives
+   2. Filters
+   3. Modules and Controllers
+   4. Routes
+   5. Factories
+-->
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<head>
+	<title>Angular App</title>
+	<link href="styles/animations.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>AngularJS in 20-ish Minutes</h1>
+    
+    <div ng-view class="slide-animation"></div>
+    
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script>
+        var app = angular.module('demoApp',['ngRoute', 'ngAnimate']);
+        
+        app.config(function($routeProvider) {
+            $routeProvider.when('/',
+            {
+                controller: 'CustomersController',
+                templateUrl: 'app/views/customers.html'
+            })
+            .when('/orders/:customerId',
+            {
+                controller: 'OrdersController',
+                templateUrl: 'app/views/orders.html'
+            })
+        });
+        
+        app.controller('CustomersController', function($scope, customersFactory) {
+            $scope.customers = null;
+            
+            function init() {
+                customersFactory.getCustomers().success(function(custs) {
+                    $scope.customers = custs;
+                    alert(custs.data.length);
+                });
+            }
+            
+            init();
+        });
+        
+        app.controller('OrdersController', function($scope, $routeParams) {
+            $scope.customerId = $routeParams.customerId;
+        });
+        
+        app.factory('customersFactory', function($http) { 
+            var factory = {};
+            factory.getCustomers = function() {
+                return $http.get('/customers.json');
+            };
+            return factory;
+        });
+        
+    </script>
+</body>
+</html>

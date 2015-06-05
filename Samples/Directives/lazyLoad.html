@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lazy Attribute Loader Directive</title>
+    <style>
+       li { background-color: #efefef; width:400px; margin:10px;}
+       a { text-decoration: none; color: blue; }
+    </style>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+	    
+	  <h3>Lazy Attribute Loader</h3>
+      The lazy-load directive will cause attribute values to be loaded when a specific trigger 
+      (such as mouseenter) fires.
+      <ul>
+         <li ng-repeat="cust in customers" 
+             lazy-load="{{::cust.street}}" attribute="title" trigger="mouseenter">
+             <a lazy-load="{{::cust.url}}" attribute="href" trigger="mouseenter">{{cust.name}}</a>
+         </li>
+      </ul>
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/lazyLoadDirective.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isolate Scope Directive</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+     	 data-ng-controller="CustomersController">
+    
+		  <h3>Directive with isolate Scope, Model and Event</h3>
+		    
+		  Parent scope values: {{ customer.name }}, {{ customer.street }}
+		  
+		  <br /><br />
+		    
+		  This will call the controller's changeData() method from the directive.
+		    
+		  <br /><br />
+		    
+		  Attribute: 
+		  <div isolate-scope-with-model-and-event datasource="customer" click="changeData()"></div>
+		    
+		  <br /><br />
+		    
+		  Element: <br /><isolate-scope-with-model-and-event datasource="customer" click="changeData()"></isolate-scope-with-model-and-event>
+	  
+	</div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/isolateScopeWithModelAndEventDirective.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using controllerAs in a Directive</title>
+</head>
+<body>
+
+	<div data-ng-app="directivesModule" 
+	     data-ng-controller="CustomersController">
+
+	  Parent Scope Customers:
+	  <br /><br />
+	  <ul><li ng-repeat="cust in customers">{{ cust.name }}</li></ul>
+	    
+	  <h3>Directive with Controller</h3>
+	  Attribute: <div controller-as datasource="customers" add="addCustomer()"></div>
+	  <br /><br />
+	  Element: <br /><controller-as datasource="customers" add="addCustomer()"></controller-as>
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/controllerAsDirective.js"></script>
+</body>
+</html>

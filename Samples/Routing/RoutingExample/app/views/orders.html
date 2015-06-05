@@ -1,0 +1,14 @@
+<h3>Orders</h3>
+
+CustomerID: {{ customerId }}
+<br />
+<table>
+    <tr ng-repeat="order in orders">
+        <td>{{order.product}}</td>
+        <td>{{order.total | currency}}</td>
+    </tr>
+</table>
+
+<br />
+
+<a href="#/">Customers</a>
