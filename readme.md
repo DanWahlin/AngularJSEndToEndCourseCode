@@ -1,4 +1,4 @@
-To create the lab code do the following:
+To build the labs do the following:
 
 
 1. Download the code and extract it to your machine (or use git).
