@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html ng-app="paginationModule">
 <head>
-	<title>Client-Side Pagination</title>
+    <title>Client-Side Pagination</title>
 </head>
 <body>
 
-	<div ng-controller="PaginationController">
-	    <ul>
-	        <li ng-repeat="customer in pagedData | limitTo:pageSize">
-	            {{customer}}
-	        </li>
-	    </ul>
-	    <button ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
-	    <button ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
-	    <br /><br />
-	    Page {{currentPage+1}} of {{totalPages}}
-	</div>
+    <div ng-controller="PaginationController">
+        <ul>
+            <li ng-repeat="customer in pagedData | limitTo:pageSize track by customer.id">
+                {{customer.name}}
+            </li>
+        </ul>
+        <button ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
+        <button ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
+        <br /><br />
+        Page {{currentPage+1}} of {{totalPages}}
+    </div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-	<script>
-		var app=angular.module('paginationModule', []);
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script>
+        var app=angular.module('paginationModule', []);
 
-		app.controller('PaginationController', function($scope, dataFactory) {
-			//Client-side pagination example
-		    $scope.currentPage = 0;
-		    $scope.pageSize = 10;
-		    $scope.totalPages = 0;
-		    $scope.pagedData = [];
+        app.controller('PaginationController', function($scope, dataFactory) {
+            //Client-side pagination example
+            $scope.currentPage = 0;
+            $scope.pageSize = 10;
+            $scope.totalPages = 0;
+            $scope.pagedData = [];
 
-		    $scope.pageButtonDisabled = function(dir) {
-		    	if (dir == -1) {
-					return $scope.currentPage == 0;
-		    	}
-				return $scope.currentPage >= dataFactory.data.length/$scope.pageSize - 1;
-		    }
+            $scope.pageButtonDisabled = function(dir) {
+                if (dir == -1) {
+                    return $scope.currentPage == 0;
+                }
+                return $scope.currentPage >= dataFactory.data.length/$scope.pageSize - 1;
+            }
 
-		    $scope.paginate = function(nextPrevMultiplier) {
-		    	$scope.currentPage += (nextPrevMultiplier * 1);
-		    	$scope.pagedData = dataFactory.data.slice($scope.currentPage*$scope.pageSize);
-		    }
+            $scope.paginate = function(nextPrevMultiplier) {
+                $scope.currentPage += (nextPrevMultiplier * 1);
+                $scope.pagedData = dataFactory.data.slice($scope.currentPage*$scope.pageSize);
+            }
 
-		    function init() {
-			    $scope.totalPages = Math.ceil(dataFactory.data.length/$scope.pageSize);
-			    $scope.pagedData = dataFactory.data;
-		    }
+            function init() {
+                $scope.totalPages = Math.ceil(dataFactory.data.length/$scope.pageSize);
+                $scope.pagedData = dataFactory.data;
+            }
 
-		    init();
+            init();
 
-		});
+        });
 
-		app.factory('dataFactory', function() {
-			var factory = {};
-			factory.data = [];
+        app.factory('dataFactory', function() {
+            var factory = {};
+            factory.data = [];
 
-			//Fill with fake data
-			function init() {
-			    for (var i=0; i<92; i++) {
-			        factory.data.push("Customer "+i);
-			    }
-			}
+            //Fill with fake data
+            function init() {
+                for (var i=0; i<92; i++) {
+                    factory.data.push({ id: i, name: "Customer " +i });
+                }
+            }
 
-			init();
+            init();
 
-			return factory;
-		});
-	</script>
+            return factory;
+        });
+    </script>
 </body>
 </html>

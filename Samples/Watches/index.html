@@ -1,56 +1,56 @@
 <!doctype html>
 <html ng-app="watchApp">
    <body>
-   	    <h1>Reference, Equality, and Collection Watches</h1>
-		<div ng-controller="WatchController">
+           <h1>Reference, Equality, and Collection Watches</h1>
+        <div ng-controller="WatchController">
 
-			<div ng-repeat="item in items">{{item}}</div>
-			<br />
-			    
-			    Reference Watch:
-			    <div>{{referenceCount}}</div>
-			    
-			    Equality Watch:    
-			    <div>{{equalityCount}}</div>
+            <div ng-repeat="item in items">{{item}}</div>
+            <br />
 
-			    Collection Watch:    
-			    <div>{{collectionCount}}</div>
+                Reference Watch:
+                <div>{{referenceCount}}</div>
 
-			    <button ng-click="addItem()">Add</button>
-		</div>
+                Equality Watch:
+                <div>{{equalityCount}}</div>
 
-  	    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-		<script>
+                Collection Watch:
+                <div>{{collectionCount}}</div>
 
-			var app = angular.module('watchApp', []);
+                <button ng-click="addItem()">Add</button>
+        </div>
 
-			app.controller('WatchController', ['$scope', function WatchController($scope){
+          <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+        <script>
 
-				$scope.items = [];
-				$scope.referenceCount = 0;
-				$scope.equalityCount = 0;
-				$scope.collectionCount = 0;
+            var app = angular.module('watchApp', []);
 
-				$scope.addItem = function() {
-				    $scope.items.push("Item " + $scope.items.length);
-				}
+            app.controller('WatchController', ['$scope', function WatchController($scope){
 
-				// Checks by reference
-				$scope.$watch("items", function(){
-				    $scope.referenceCount++;
-				}, false);
+                $scope.items = [];
+                $scope.referenceCount = 0;
+                $scope.equalityCount = 0;
+                $scope.collectionCount = 0;
 
-				// Checks by value
-				$scope.$watch("items", function(){
-				    $scope.equalityCount++;
-				}, true);
+                $scope.addItem = function() {
+                    $scope.items.push("Item " + $scope.items.length);
+                }
 
-				// Checks by value
-				$scope.$watchCollection("items", function(){
-				    $scope.collectionCount++;
-				});
+                // Checks by reference
+                $scope.$watch("items", function(){
+                    $scope.referenceCount++;
+                }, false);
 
-			}]);
-		</script>
+                // Checks by value
+                $scope.$watch("items", function(){
+                    $scope.equalityCount++;
+                }, true);
+
+                // Checks by value
+                $scope.$watchCollection("items", function(){
+                    $scope.collectionCount++;
+                });
+
+            }]);
+        </script>
    </body>
 </html>

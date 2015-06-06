@@ -4,36 +4,36 @@
   <meta charset="UTF-8">
   <title>Example - example-example106-production</title>
   <style rel="stylesheet">
-	  .show-scope-demo.ng-scope,
-	  .show-scope-demo .ng-scope  {
-	    border: 1px solid red;
-	    margin: 3px;
-	  }
+      .show-scope-demo.ng-scope,
+      .show-scope-demo .ng-scope  {
+        border: 1px solid red;
+        margin: 3px;
+      }
   </style>
-  
 
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <script>
-	  function GreetCtrl($scope) {
-	    $scope.name = 'AngularJS Scopes';
-	  }
+      function GreetCtrl($scope) {
+        $scope.name = 'AngularJS Scopes';
+      }
 
-	  function ListCtrl($scope) {
-	    $scope.names = ['Item 1', 'Item 2', 'Item 3'];
-	  }
-  </script> 
+      function ListCtrl($scope) {
+        $scope.names = ['Item 1', 'Item 2', 'Item 3'];
+      }
+  </script>
 </head>
 
 <body ng-app="">
-  	<div class="show-scope-demo">
-		  <div ng-controller="GreetCtrl">
-		      {{name}}!
-		  </div>
-		  <div ng-controller="ListCtrl">
-		    <ol>
-		      <li ng-repeat="name in names">{{name}}</li>
-		    </ol>
-		  </div>
-	</div>
+      <div class="show-scope-demo">
+          <div ng-controller="GreetCtrl">
+              {{name}}!
+          </div>
+          <div ng-controller="ListCtrl">
+            <ol>
+              <li ng-repeat="name in names">{{name}}</li>
+            </ol>
+          </div>
+    </div>
 </body>
 </html>
