@@ -1,0 +1,6 @@
+ <!-- "master" is injected in by the router as the "controller as" name -->
+<h1>{{orders.name}}</h1>
+<br />
+<ul>
+    <li ng-repeat="msg in orders.messages track by $index">{{ msg }}</li>
+</ul>
