@@ -51,13 +51,13 @@
 
 				/*
 
-				$scope.$watch('customers', function(oldVal, newVal) {
+				$scope.$watch('customers', function(newVal, oldVal) {
 					if ($scope.action) {
 						$scope.messages.push({action: $scope.action + ' action performed'});
 					}
 				}, false);
 
-				$scope.$watch('customers', function(oldVal, newVal) {
+				$scope.$watch('customers', function(newVal, oldVal) {
 					if ($scope.action) {
 						$scope.messages.push({action: $scope.action + ' action performed'});
 					}
@@ -65,7 +65,7 @@
 
 				*/
 
-				$scope.$watchCollection('customers', function(oldVal, newVal) {
+				$scope.$watchCollection('customers', function(newVal, oldVal) {
 					if ($scope.action) {
 						$scope.messages.push({action: $scope.action + ' action performed'});
 					}
