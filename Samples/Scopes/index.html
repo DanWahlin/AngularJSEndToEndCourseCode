@@ -14,6 +14,10 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <script>
+      var app = angular.module('demo', []);
+      app.controller('GreetCtrl', GreetCtrl);
+      app.controller('ListCtrl', ListCtrl);
+    
       function GreetCtrl($scope) {
         $scope.name = 'AngularJS Scopes';
       }
@@ -24,7 +28,7 @@
   </script>
 </head>
 
-<body ng-app="">
+<body ng-app="demo">
       <div class="show-scope-demo">
           <div ng-controller="GreetCtrl">
               {{name}}!
