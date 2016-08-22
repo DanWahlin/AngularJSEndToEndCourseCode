@@ -1,12 +1,13 @@
 {
-  "name": "Unit-Testing",
+  "name": "unit-testing",
   "description": "Unit Testing Demos",
   "devDependencies": {
-    "phantomjs": "^1.9",
-    "karma": "^0.12",
-    "karma-jasmine": "^0.3.5",
-    "karma-ng-scenario": "^0.1",
-    "karma-chrome-launcher": "^0.1.12",
-    "express": "^4.12.4"
+    "phantomjs": "^2.1.7",
+    "karma": "^1.2.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-ng-scenario": "^1.0.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "jasmine": "^2.4.1",
+    "express": "^4.14.0"
   }
 }
