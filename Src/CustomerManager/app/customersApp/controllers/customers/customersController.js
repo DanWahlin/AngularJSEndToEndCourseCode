@@ -14,7 +14,7 @@
         vm.orderby = 'lastName';
         vm.reverse = false;
         vm.searchText = null;
-        vm.cardAnimationClass = '.card-animation';
+        vm.cardAnimationClass = 'card-animation';
 
         //paging
         vm.totalRecords = 0;
