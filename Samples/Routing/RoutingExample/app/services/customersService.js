@@ -4,8 +4,8 @@
 	    var factory = {};
 
 	    factory.getCustomers = function() {
-	        return $http.get('/customers.json').success(function (custs) {
-	            return custs;
+	        return $http.get('/customers.json').then(function (custs) {
+	            return custs.data;
 	        });
 	    };
 	    

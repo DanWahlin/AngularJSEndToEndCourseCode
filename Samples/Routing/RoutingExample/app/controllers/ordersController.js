@@ -4,7 +4,7 @@
 	    $scope.customerId = $routeParams.customerId;
 
 	    function init() {
-	        ordersService.getCustomerOrders($scope.customerId).success(function (orders) {
+	        ordersService.getCustomerOrders($scope.customerId).then(function (orders) {
 	            $scope.orders = orders;
 	        });
 	    }

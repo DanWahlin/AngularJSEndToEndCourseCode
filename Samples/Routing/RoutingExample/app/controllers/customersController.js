@@ -1,7 +1,7 @@
 (function() {
 
     var CustomersController = function($scope, customers /* passed in by $routeProvider */) {
-        $scope.customers = customers.data;
+        $scope.customers = customers;
     };
 
     CustomersController.$inject = ['$scope', 'customers'];
