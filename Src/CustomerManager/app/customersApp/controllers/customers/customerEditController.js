@@ -77,7 +77,7 @@
 
         function routeChange(event, newUrl, oldUrl) {
             //Navigate to newUrl if the form isn't dirty
-            if (!vm.editForm || !vm.editForm.$dirty) return;
+            if (!$scope.editForm || !$scope.editForm.$dirty) return;
 
             var modalOptions = {
                 closeButtonText: 'Cancel',

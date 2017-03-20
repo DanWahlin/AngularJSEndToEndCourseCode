@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#/">
+                <a class="navbar-brand" href="#!/">
                     <img src="Content/images/people.png" alt="logo">
                     <span class="appTitle">{{ vm.appTitle }}</span>
                 </a>
@@ -27,11 +27,11 @@
             <div class="nav-container" data-collapse="vm.isCollapsed">
 
                 <ul class="nav navbar-nav nav-pills navBarPadding">
-                    <li ng-class="{'active': vm.highlight('/customers')}"><a href="#/customers">Customers</a></li>
-                    <li ng-class="{'active': vm.highlight('/orders')}"><a href="#/orders">Orders</a></li>
-                    <li ng-class="{'active': vm.highlight('/about')}"><a href="#/about">About</a></li>
+                    <li ng-class="{'active': vm.highlight('/customers')}"><a href="#!/customers">Customers</a></li>
+                    <li ng-class="{'active': vm.highlight('/orders')}"><a href="#!/orders">Orders</a></li>
+                    <li ng-class="{'active': vm.highlight('/about')}"><a href="#!/about">About</a></li>
                     <li ng-class="{'active': vm.highlight('/login')}" id="nav-login" ng-click="vm.loginOrOut()">
-                        <a data-href="#/login">{{ vm.loginLogoutText }}</a>
+                        <a data-href="#!/login">{{ vm.loginLogoutText }}</a>
                     </li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
     </header>
 
     <div class="slide-animation-container">
-        <div data-ng-view id="ng-view" class="slide-animation"></div>
+        <div ng-view id="ng-view" class="slide-animation"></div>
     </div>
 
     <div id="footer">
@@ -62,9 +62,9 @@
 
 
     <!-- 3rd party libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
     <script src="Scripts/angular-ui-bootstrap.js"></script>
     <script src="Scripts/tweenMax.min.js"></script>
     

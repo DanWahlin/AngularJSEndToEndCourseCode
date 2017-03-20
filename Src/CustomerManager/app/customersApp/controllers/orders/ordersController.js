@@ -16,8 +16,7 @@
 
         init();
 
-        vm.pageChanged = function (page) {
-            vm.currentPage = page;
+        vm.pageChanged = function () {
             getCustomers();
         };
 

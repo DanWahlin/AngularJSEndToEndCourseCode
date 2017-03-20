@@ -21,8 +21,7 @@
         vm.pageSize = 10;
         vm.currentPage = 1;
 
-        vm.pageChanged = function (page) {
-            vm.currentPage = page;
+        vm.pageChanged = function () {
             getCustomersSummary();
         };
 

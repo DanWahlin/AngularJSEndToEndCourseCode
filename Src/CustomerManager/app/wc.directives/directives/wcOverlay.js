@@ -6,7 +6,7 @@
 
         var template = '<div id="overlay-container" class="overlayContainer">' +
                             '<div id="overlay-background" class="overlayBackground"></div>' +
-                            '<div id="overlay-content" class="overlayContent" data-ng-transclude>' +
+                            '<div id="overlay-content" class="overlayContent" ng-transclude>' +
                             '</div>' +
                         '</div>',
 

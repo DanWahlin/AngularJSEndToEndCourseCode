@@ -42,11 +42,11 @@
                      ng-repeat="customer in vm.filteredCustomers | orderBy:'lastName'">
                     <div class="card">
                         <button class="btn close cardClose" title="Delete Customer" ng-click="vm.deleteCustomer(customer.id)">&times;</button>
-                        <div class="cardHeader"><a href="#/customeredit/{{customer.id}}" class="white">{{customer.firstName + ' ' + customer.lastName}} <i class="icon-edit icon-white editIcon"></i></a></div>
+                        <div class="cardHeader"><a href="#!/customeredit/{{customer.id}}" class="white">{{customer.firstName + ' ' + customer.lastName}} <i class="icon-edit icon-white editIcon"></i></a></div>
                         <div class="cardBody">
                             <div class="clearfix">
                                 <div class="pull-left cardBodyLeft">
-                                    <a href="#/customeredit/{{customer.id}}" class="white"><img ng-src="Content/images/{{customer.gender | lowercase}}.png" class="cardImage" /></a>
+                                    <a href="#!/customeredit/{{customer.id}}" class="white"><img ng-src="Content/images/{{customer.gender | lowercase}}.png" class="cardImage" /></a>
                                 </div>
                                 <div class="pull-left cardBodyRight">
                                     <div class="cardBodyContent">{{customer.city}}, {{customer.state.name}}</div>
@@ -76,11 +76,11 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="customer in vm.filteredCustomers | orderBy:vm.orderby:vm.reverse" class="repeat-animation">
-                                    <td><a href="#/customeredit/{{customer.id}}"><img ng-src="Content/images/{{customer.gender | lowercase}}.png" class="cardImage" alt="Customer Image" /></a></td>
-                                    <td><a href="#/customeredit/{{customer.id}}">{{customer.firstName + ' ' + customer.lastName}}</a></td>
+                                    <td><a href="#!/customeredit/{{customer.id}}"><img ng-src="Content/images/{{customer.gender | lowercase}}.png" class="cardImage" alt="Customer Image" /></a></td>
+                                    <td><a href="#!/customeredit/{{customer.id}}">{{customer.firstName + ' ' + customer.lastName}}</a></td>
                                     <td>{{customer.city}}, {{customer.state.name}}</td>
                                     <td>
-                                        <a href="#/customerorders/{{customer.id}}" class="btn-link">
+                                        <a href="#!/customerorders/{{customer.id}}" class="btn-link">
                                             {{ customer.orderCount }}
                                             <span ng-pluralize count="customer.orderCount"
                                                   when="{'1': 'Order','other': 'Orders'}">

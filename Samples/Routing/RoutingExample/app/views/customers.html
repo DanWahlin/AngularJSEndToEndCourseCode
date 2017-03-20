@@ -4,7 +4,7 @@
     <h3>Customers:</h3>
     <table>
         <tr ng-repeat="cust in customers |  filter:searchText | orderBy:'name'">
-            <td><a href="#/orders/{{ cust.id }}">{{ cust.name  }}</a></td>
+            <td><a href="#!/orders/{{ cust.id }}">{{ cust.name  }}</a></td>
             <td>{{ cust.total | currency }}</td>
         </tr>
     </table>

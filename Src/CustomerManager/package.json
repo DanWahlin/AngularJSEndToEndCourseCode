@@ -2,29 +2,32 @@
   "name": "customer-manager-standard",
   "author": "Dan Wahlin",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "dependencies": {
-    "express": "^4.14.0",
-    "pug": "^2.0.0-beta5",
-    "mongoose": "^4.5.10",
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta11",
+    "mongoose": "^4.9.1",
     "cookie-parser": "^1.4.3",
-    "body-parser": "^1.15.2",
-    "express-session": "^1.14.0",
-    "errorhandler": "^1.4.3",
+    "body-parser": "^1.17.1",
+    "express-session": "^1.15.1",
+    "errorhandler": "^1.5.0",
     "csurf": "^1.9.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-csso": "^2.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-csso": "^3.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-uglify": "^2.0.0",
-    "phantomjs-prebuilt": "2.1.12",
-    "karma": "^1.2.0",
-    "karma-jasmine": "^1.0.2",
+    "gulp-uglify": "^2.1.1",
+    "phantomjs-prebuilt": "2.1.14",
+    "karma": "^1.5.0",
+    "karma-jasmine": "^1.1.0",
     "karma-ng-scenario": "^1.0.0",
     "karma-chrome-launcher": "^2.0.0",
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.5.3"
   }
 }

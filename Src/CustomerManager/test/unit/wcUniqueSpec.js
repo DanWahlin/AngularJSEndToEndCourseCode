@@ -14,10 +14,10 @@
     beforeEach(function () {
         inject(function ($compile, $rootScope, $q, customersService) {
             scope = $rootScope.$new();
-            input = angular.element('<input type="text" name="email" class="form-control" data-ng-model="customer.email" ' +
-                                    'data-ng-model-options="{ updateOn: \'blur\' }" ' +
+            input = angular.element('<input type="text" name="email" class="form-control" ng-model="customer.email" ' +
+                                    'ng-model-options="{ updateOn: \'blur\' }" ' +
                                     'data-wc-unique  data-wc-unique-key="{{customer.id}}"  data-wc-unique-property="email"  ' +
-                                    'data-ng-minlength="3" required />');
+                                    'ng-minlength="3" required />');
             element = angular.element('<form name="editForm"></form>');
             element.append(input);
 

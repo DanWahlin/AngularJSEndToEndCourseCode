@@ -5,15 +5,15 @@
 </head>
 <body>
 
-	<div data-ng-app="directivesModule" 
-	     data-ng-controller="CustomersController">
+	<div ng-app="directivesModule" 
+	     ng-controller="CustomersController">
 	    
 	  <h3>Directive with Isolate Scope and String Passed In (uses @)</h3>
 	  <div isolate-scope-with-string name="{{ customer.name }}"></div>
 	  
 	</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
 	<script src="js/directivesController.js"></script>
 	<script src="js/isolateScopeWithStringDirective.js"></script>
 </body>

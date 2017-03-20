@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="customersApp">
+<html ng-app="customersApp">
 <head>
     <title>Customer Manager</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,18 +8,18 @@
     <link href="Content/animations.css" rel="stylesheet" />
     <link href="Content/styles.css" rel="stylesheet" />
 </head>
-<body data-ng-cloak="">
+<body ng-cloak="">
 
-    <header class="navbar navbar-inner navbar-fixed-top" data-ng-controller="NavbarController as vm">
+    <header class="navbar navbar-inner navbar-fixed-top" ng-controller="NavbarController as vm">
         <nav class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-ng-click="vm.isCollapsed = !vm.isCollapsed">
+                <button type="button" class="navbar-toggle" ng-click="vm.isCollapsed = !vm.isCollapsed">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#/">
+                <a class="navbar-brand" href="#!/">
                     <img src="Content/images/people.png" alt="logo">
                     <span class="appTitle">{{ vm.appTitle }}</span>
                 </a>
@@ -29,22 +29,22 @@
                 <!-- With menu-highlighter directive -->
                 <ul class="nav navbar-nav nav-pills navBarPadding"
                     data-menu-highlighter data-highlight-class-name="active">
-                    <li><a href="#/customers">Customers</a></li>
-                    <li><a href="#/orders">Orders</a></li>
-                    <li><a href="#/about">About</a></li>
-                    <li id="nav-login" data-ng-click="vm.loginOrOut()">
+                    <li><a href="#!/customers">Customers</a></li>
+                    <li><a href="#!/orders">Orders</a></li>
+                    <li><a href="#!/about">About</a></li>
+                    <li id="nav-login" ng-click="vm.loginOrOut()">
                         <!-- href not used but needed to compare against path in menu-highlighter -->
-                        <a data-href="#/login">{{ vm.loginLogoutText }}</a>
+                        <a data-href="#!/login">{{ vm.loginLogoutText }}</a>
                     </li>
                 </ul>
 
                 <!-- Without menu-highlighter directive -->
                 <!--<ul class="nav navbar-nav nav-pills navBarPadding">
-                    <li data-ng-class="{'active':highlight('/customers')}"><a href="#/customers">Customers</a></li>
-                    <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Orders</a></li>
-                    <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
-                    <li data-ng-class="{'active':highlight('/login')}" id="nav-login"
-                        data-ng-click="loginOrOut()">
+                    <li ng-class="{'active':highlight('/customers')}"><a href="#!/customers">Customers</a></li>
+                    <li ng-class="{'active':highlight('/orders')}"><a href="#!/orders">Orders</a></li>
+                    <li ng-class="{'active':highlight('/about')}"><a href="#!/about">About</a></li>
+                    <li ng-class="{'active':highlight('/login')}" id="nav-login"
+                        ng-click="loginOrOut()">
                         <a>{{ loginLogoutText }}</a>
                     </li>
                 </ul>-->
@@ -77,9 +77,9 @@
     </div>
 
     <!-- 3rd party libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
     <script src="Scripts/angular-ui-bootstrap.js"></script>
     <script src="Scripts/tweenMax.min.js"></script>
     
