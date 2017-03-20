@@ -45,8 +45,8 @@
             $scope.customers = null;
 
             function init() {
-                customersFactory.getCustomers().success(function(custs) {
-                    $scope.customers = custs;
+                customersFactory.getCustomers().then(function(custs) {
+                    $scope.customers = custs.data;
                     //alert(custs.length);
                 });
             }
