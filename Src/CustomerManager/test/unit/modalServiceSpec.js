@@ -5,12 +5,12 @@
     beforeEach(module('customersApp'));
     beforeEach(module('ui.bootstrap'));
 
-    beforeEach(inject(function (modalService, $modal) {
+    beforeEach(inject(function (modalService, $uibModal) {
         modalResult = { result: "some result" };
         _modalService = modalService;
 
-        _modal = $modal;
-        spyOn($modal, "open").and.returnValue(modalResult);
+        _modal = $uibModal;
+        spyOn($uibModal, "open").and.returnValue(modalResult);
 
         modalOptions = {
             actionButtonText: 'Proceed',
