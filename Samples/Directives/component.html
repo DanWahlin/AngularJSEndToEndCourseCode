@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Component Demo</title>
+</head>
+<body>
+
+	<div ng-app="directivesModule" 
+	     ng-controller="CustomersController">
+	    
+	  <h3>Using a Component</h3>
+
+      <h4>Parent Customers</h4>
+      <ul>
+          <li ng-repeat="cust in customers">{{cust.name}}</li>
+      </ul>
+      <br />
+      <h4>Customer Component</h4>
+      Note that changes in component update the parent...don't do this!
+	  <br /><br />
+      <customer-detail ng-repeat="customer in customers" 
+                       customer="customer"
+                       change-customer="changeName(customer, 'foo')">
+      </customer-detail>
+
+      <h4>Customer Component (no changes in component)</h4>
+      <customer-detail-no-changes ng-repeat="customer in customers" 
+                       customer="customer">
+      </customer-detail-no-changes>  
+	  
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+	<script src="js/directivesController.js"></script>
+	<script src="js/component.js"></script>
+</body>
+</html>

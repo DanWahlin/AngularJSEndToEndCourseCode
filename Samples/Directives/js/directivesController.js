@@ -56,6 +56,10 @@
                 street: counter + ' Cedar Point St.'
             };
         };
+
+        $scope.changeName = function(customer) {
+            customer.name = 'foo';
+        };
     };
 
     CustomersController.$inject = injectParams;
