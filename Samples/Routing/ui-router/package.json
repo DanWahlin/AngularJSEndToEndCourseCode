@@ -1,0 +1,12 @@
+{
+  "name": "angular-routing",
+  "version": "1.0.0",
+  "description": "Sample App",
+  "author": "Dan Wahlin",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "scripts":{
+    "start": "node server.js"
+  }
+}

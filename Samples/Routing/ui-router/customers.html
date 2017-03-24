@@ -1,0 +1,33 @@
+<div class="jumbotron text-center">
+    <h1>Customers</h1>
+    <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr ng-repeat="cust in customers">
+                    <td><a ui-sref="customers.detail({id: cust.id})">{{ cust.name }}</a></td>
+                    <td>${{ cust.total }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <div class="col-sm-6">
+        <div ui-view="detail"></div>
+    </div>
+
+    
+</div>

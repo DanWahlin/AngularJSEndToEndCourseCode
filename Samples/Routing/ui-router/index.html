@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home" ui-sref-active="active">Home</a></li>
+        <li><a ui-sref="customers" ui-sref-active="active">Customers</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div ui-view></div>
+</div>
+
+<script src="//code.angularjs.org/1.6.3/angular.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
