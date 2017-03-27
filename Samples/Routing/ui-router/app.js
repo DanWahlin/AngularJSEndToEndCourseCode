@@ -26,20 +26,37 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
         .state('customers', {
             url: '/customers',
-                templateUrl: 'customers.html',
-                controller: 'customersController'
+            templateUrl: 'customers.html',
+            controller: 'customersController',
+            data: {
+                auth: true
+            }
         })
 
         .state('customers.detail', {
-          url: '^/:id',
+          url: '/:id', //use '^/:id' to make it a root route
           views: {
             'detail': {
                 templateUrl: 'customer-details.html',
-                controller: 'customerDetailsController' 
+                controller: 'customerDetailsController'
             }
-          },
-        })
+          }
+        });
         
+});
+
+app.run(function($transitions) {
+    $transitions.onBefore( { to: 'customers.detail' }, function(trans) {
+        console.log('Before customers.detail state');
+        console.log('customers.detail state requires auth? ' + trans.to().data.auth);
+        return true;
+    });
+    $transitions.onEnter( { to: 'customers.detail' }, function(trans, state) {
+        console.log('Entering customers.detail state');
+    });
+    $transitions.onExit( { exiting: 'customers.detail' }, function(trans, state) {
+        console.log('Leaving customers.detail state');
+    });
 });
 
 app.controller('customerDetailsController', function($scope, $stateParams, customersService) {
