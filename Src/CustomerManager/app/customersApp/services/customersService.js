@@ -66,14 +66,20 @@
             //Iterate through customers
             for (var i = 0; i < custsLen; i++) {
                 var cust = customers[i];
-                if (!cust.orders) continue;
+                if (!cust.orderCount) {
+                    cust.orderCount = 0;
+                    cust.ordersTotal = 0;
+                    continue;
+                };
 
-                var ordersLen = cust.orders.length;
-                for (var j = 0; j < ordersLen; j++) {
-                    var order = cust.orders[j];
-                    order.orderTotal = order.quantity * order.price;
+                if (cust.orders) {
+                    var ordersLen = cust.orders.length;
+                    for (var j = 0; j < ordersLen; j++) {
+                        var order = cust.orders[j];
+                        order.orderTotal = order.quantity * order.price;
+                    }
+                    cust.ordersTotal = ordersTotal(cust);
                 }
-                cust.ordersTotal = ordersTotal(cust);
             }
         }
 
