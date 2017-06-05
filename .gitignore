@@ -6,3 +6,4 @@ packages
 *.ldf
 node_modules
 .ds_store
+npm-debug.log
